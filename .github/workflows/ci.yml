@@ -1,8 +1,8 @@
 name: Java CI with Gradle
 
 on:
-  push:
-    branches: [ "master" ]
+#   push:
+#     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
@@ -23,7 +23,7 @@ jobs:
         distribution: 'temurin'
     - name: Add execute permission to Gradle
       run: chmod +x gradlew
-    - name: Build with Gradle
-      uses: gradle/gradle-build-action@v2.3.3
+    - name: Build with Gradle 
+      uses:  gradle/gradle-build-action@v2.3.3
       with:
         arguments: build    
