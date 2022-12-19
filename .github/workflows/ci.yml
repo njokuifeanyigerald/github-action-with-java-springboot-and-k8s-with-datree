@@ -47,7 +47,7 @@ jobs:
        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
        
     - name: Run Datree Policy Check
-      uses: datreeio/action-datree@master
+      uses: datreeio/action-datree@main
       with:
         path: '**/*.yaml'
         cliArguments: '--only-k8s-files'
