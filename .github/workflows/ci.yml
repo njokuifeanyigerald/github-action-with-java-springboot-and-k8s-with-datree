@@ -5,9 +5,13 @@ on:
 #     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  
 
 permissions:
   contents: read
+env:
+  DATREE_TOKEN: ${{ secrets.DATREE_TOKEN }} 
+
 
 jobs:
   build:
@@ -40,4 +44,10 @@ jobs:
       # Force to fail step after specific time.
       timeout-minutes: 5
       env:
-       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
+       
+    - name: Run Datree Policy Check
+      uses: datreeio/action-datree@main
+      with:
+        path: 'kube.yaml'
+        cliArguments: '--only-k8s-files'
