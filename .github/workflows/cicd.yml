@@ -73,4 +73,4 @@ jobs:
       with:
 #         context: .
         push: true
-        tags: bopgeek/firstgithubActionApp:latest
+        tags: bopgeek/firstgithubactionapp:latest
