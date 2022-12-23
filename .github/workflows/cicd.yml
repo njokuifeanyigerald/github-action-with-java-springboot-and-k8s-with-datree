@@ -66,11 +66,12 @@ jobs:
       uses: docker/login-action@v2
       with:
         #will use ngrok to configure the host
-#         registry: http://127.0.0.1:8081
+        registry: http://127.0.0.1:8081
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
     - name: Build and push
       uses: docker/build-push-action@v3
       with:
+        context: .
         push: true
         tags: bopgeek/firstgithubactionapp:latest
