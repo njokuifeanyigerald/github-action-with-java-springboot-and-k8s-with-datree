@@ -82,7 +82,7 @@ jobs:
     - name: test deployed manifest
       run: |
         sleep 60
-        kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myapp:8000
+        kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myapp:8080
         
     # SENDING MAIL
     - name: Send mail
