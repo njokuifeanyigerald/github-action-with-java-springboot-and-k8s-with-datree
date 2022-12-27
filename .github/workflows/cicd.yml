@@ -102,7 +102,7 @@ jobs:
         # Required recipients' addresses:
         to: njokuifeanyigerald@gmail.com
         # Required sender full name (address can be skipped):
-        from: Gerald Njoku # <user@example.com>
+        from: Ifeanyi Gerald Njoku # <user@example.com>
         # Optional plain body:
         body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
         
