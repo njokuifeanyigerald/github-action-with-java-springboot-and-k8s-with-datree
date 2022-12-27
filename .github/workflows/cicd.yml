@@ -71,3 +71,40 @@ jobs:
       run: 
         docker push  bopgeek/javak8sdatree:${{ github.run_number }}
         
+        
+    # DEPLOYING KUBERNETES
+    - name: Trigger deploy for kubernetes manifest
+      run: |
+        sed -i "s;imagename;bopgeek/javak8sdatree:${{ github.run_number }};g" kube.yaml
+        kubectl apply -f kube.yaml
+        kubectl get all
+        
+    - name: test deployed manifest
+      run: |
+        sleep 60
+        kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myapp:8080
+        
+    # SENDING MAIL
+    - name: Send mail
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        # Server port, default 25:
+        server_port: 465
+        # Optional whether this connection use TLS (default is true if server_port is 465)
+        # secure: true
+        # Optional (recommended): mail server username:
+        username: ${{secrets.MAIL_USERNAME}}
+        # Optional (recommended) mail server password:
+        password: ${{secrets.MAIL_PASSWORD}}
+        # Required mail subject:
+        subject: ${{ github.job }} job of ${{ github.repository }} has ${{ job.status }}
+        # Required recipients' addresses:
+        to: njokuifeanyigerald@gmail.com
+        # Required sender full name (address can be skipped):
+        from: Gerald Njoku # <user@example.com>
+        # Optional plain body:
+        body: ${{ github.job }} job in worflow ${{ github.workflow }} of ${{ github.repository }} has ${{ job.status }}
+        
+
+
