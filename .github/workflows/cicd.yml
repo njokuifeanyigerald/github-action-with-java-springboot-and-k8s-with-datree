@@ -34,19 +34,19 @@ jobs:
         
     # SONARQUBE    
     # Triggering SonarQube analysis as results of it are required by Quality Gate check.
-    - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-    # Check the Quality Gate status.
-    - name: SonarQube Quality Gate check
-      id: sonarqube-quality-gate-check
-      uses: sonarsource/sonarqube-quality-gate-action@master
-      # Force to fail step after specific time.
-      timeout-minutes: 5
-      env:
-       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
+#     - name: SonarQube Scan
+#       uses: sonarsource/sonarqube-scan-action@master
+#       env:
+#         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+#     # Check the Quality Gate status.
+#     - name: SonarQube Quality Gate check
+#       id: sonarqube-quality-gate-check
+#       uses: sonarsource/sonarqube-quality-gate-action@master
+#       # Force to fail step after specific time.
+#       timeout-minutes: 5
+#       env:
+#        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }} 
        
        
      #DATREE
@@ -64,12 +64,12 @@ jobs:
         #registry: http://127.0.0.1:8081
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-    - name: docker build
-      run: 
-        docker build -t bopgeek/javak8sdatree:${{ github.run_number }} .
-    - name: docker push
-      run: 
-        docker push  bopgeek/javak8sdatree:${{ github.run_number }}
+#     - name: docker build
+#       run: 
+#         docker build -t bopgeek/javak8sdatree:${{ github.run_number }} .
+#     - name: docker push
+#       run: 
+#         docker push  bopgeek/javak8sdatree:${{ github.run_number }}
         
         
     # DEPLOYING KUBERNETES
@@ -82,7 +82,7 @@ jobs:
     - name: test deployed manifest
       run: |
         sleep 60
-        kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myapp:8080
+        kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myapp:8000
         
     # SENDING MAIL
     - name: Send mail
