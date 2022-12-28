@@ -76,7 +76,7 @@ jobs:
     - name: Trigger deploy for kubernetes manifest
       run: |
         sed -i "s;imagename;bopgeek/javak8sdatree:${{ github.run_number }};g"  kube.yaml
-        kubectl delete -f kube.yaml
+        kubectl apply -f kube.yaml
         kubectl get all
         
 #     - name: test deployed manifest
