@@ -50,11 +50,11 @@ jobs:
        
        
      #DATREE
-#     - name: Run Datree Policy Check
-#       uses: datreeio/action-datree@main
-#       with:
-#         path: 'kube.yaml'
-#         cliArguments: '--only-k8s-files'
+    - name: Run Datree Policy Check
+      uses: datreeio/action-datree@main
+      with:
+        path: 'kube.yaml'
+        cliArguments: '--only-k8s-files'
     
     
     #DOCKER
