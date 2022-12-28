@@ -49,7 +49,7 @@ spec:
           image: imagename
           command: ["/bin/sh"]
           args: ["-c","sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done"]
-#           imagePullPolicy: Never
+          imagePullPolicy: IfNotPresent
           ports:
             - name: http
               containerPort: 8080
