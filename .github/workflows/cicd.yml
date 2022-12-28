@@ -76,7 +76,7 @@ jobs:
     # DEPLOYING KUBERNETES
 #     - name: Trigger deploy for kubernetes manifest
 #       run: |
-#         sed -i "s;imagename;bopgeek/javak8sdatree:${{ github.run_number }};g"  kube.yaml
+#         sed -i "s;mongo;bopgeek/javak8sdatree:${{ github.run_number }};g"  kube.yaml
 #         kubectl apply -f kube.yaml
 #         sleep 60
 #         kubectl get po
